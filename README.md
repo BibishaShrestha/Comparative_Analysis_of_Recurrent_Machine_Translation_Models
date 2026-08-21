@@ -122,7 +122,7 @@ saved to `outputs/figures/`.
 
 The full research-article-style report including Abstract, Introduction, Methodology, Experimental Setup,
 Results, per-model Discussion, and a combined comparative Discussion & Conclusion — is at
-`report/NMT_Comparative_Report.docx`.
+`report/NMT_Final_Report.pdf`.
 
 ## Attribution
 
