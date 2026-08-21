@@ -25,7 +25,7 @@ nmt-comparison/
 │   └── _about.txt               # dataset attribution, as shipped by ManyThings.org
 ├── src/
 │   ├── data_prep.py              # data loading, cleaning, PAD/SOS/EOS/UNK vocab, 80/10/10 split (random_state=20)
-│   └── train_utils.py            # training loop, evaluation, BLEU, plotting, results bookkeeping
+│   └── train_utils.py            # training loop, evaluation, BLEU, perplexity, inference latency plotting, results bookkeeping
 ├── notebooks/
 │   ├── 01_RNN.ipynb
 │   ├── 02_Encoder_Decoder.ipynb
@@ -89,7 +89,7 @@ its metrics (loss curves, parameter count, BLEU, etc.) to `outputs/results.json`
 that file to build the final comparison table, plots, and combined Discussion/Conclusion - so 01–04
 must be run at least once before 05.
 
-**Note on runtime:** on a single CPU core, each of notebooks 01–04 takes roughly 6–10 minutes for
+**Note on runtime:** on a single CPU core, each of notebooks 01–04 takes roughly 3-4 minutes for
 40 epochs on the 8,000-pair subset. A GPU will finish each in well under a minute.
 
 ## Hyperparameters (identical across all 4 models)
@@ -109,9 +109,14 @@ must be run at least once before 05.
 
 ## Evaluation
 
-- **Quantitative:** training/validation NLL loss curves, corpus BLEU-4 (with smoothing) on a held-out test set.
+- **Quantitative (accuracy):** training/validation NLL loss curves, corpus BLEU-4 (with smoothing) on a held-out test set, and perplexity (`exp(loss)`) for train/validation, reported both at the final epoch and at each model's best epoch.
+- **Quantitative (efficiency):** average inference latency (ms/sentence) and throughput (sentences/sec) for greedy decoding, measured over 100 test-set sentences after a short warmup — lets the report discuss accuracy-vs-speed tradeoffs (e.g. whether attention's BLEU gains are "worth" its extra per-step compute), not just raw accuracy.
 - **Qualitative:** 10 randomly sampled test-set translations per model.
 - **Interpretability:** attention-weight heatmaps for the two attention-based models (03, 04).
+
+Combined comparison plots for all four models — BLEU/parameter count, training/validation loss
+curves, validation perplexity, and BLEU-vs-latency — are generated in `05_Comparison.ipynb` and
+saved to `outputs/figures/`.
 
 ## Report
 
