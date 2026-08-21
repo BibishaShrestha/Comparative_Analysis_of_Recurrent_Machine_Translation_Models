@@ -16,7 +16,7 @@ outputs/checkpoints/
 !outputs/figures/.gitkeep
 
 # --- Report ---
-report/*.docx
+report/*.pdf
 
 # --- Python ---
 __pycache__/
