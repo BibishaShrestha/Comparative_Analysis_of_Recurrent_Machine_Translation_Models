@@ -15,8 +15,7 @@ outputs/*.pth
 outputs/checkpoints/
 !outputs/figures/.gitkeep
 
-# --- Report ---
-report/*.pdf
+
 
 # --- Python ---
 __pycache__/
