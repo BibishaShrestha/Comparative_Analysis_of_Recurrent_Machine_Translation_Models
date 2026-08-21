@@ -1,0 +1,45 @@
+# --- Data ---
+# The raw ManyThings/Tatoeba corpus is 50MB and freely re-downloadable;
+# keep it out of git history. download_data.sh fetches it fresh.
+data/*.txt
+data/*.zip
+!data/deu.txt
+!data/.gitkeep
+
+# --- Outputs ---
+# Trained weights and large intermediate artifacts are not committed.
+# Figures (loss curves, attention heatmaps) and results.json ARE kept,
+# since they're small and are what the report/comparison notebook rely on.
+outputs/*.pt
+outputs/*.pth
+outputs/checkpoints/
+!outputs/figures/.gitkeep
+
+# --- Report ---
+report/*.docx
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+.venv/
+venv/
+env/
+build/
+dist/
+
+# --- Jupyter ---
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+
+# --- OS / editor ---
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# --- Misc ---
+*.log
+.env
